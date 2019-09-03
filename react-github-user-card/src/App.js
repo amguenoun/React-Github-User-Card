@@ -44,6 +44,7 @@ class App extends React.Component {
 
   clickUserName = (name) => {
     this.setState({ username: name }, this.runAxios);
+    window.scrollTo(0, 0);
   }
 
   render() {
