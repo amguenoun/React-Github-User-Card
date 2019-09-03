@@ -12,6 +12,11 @@
    width:45%;
    margin:0;
  }
+
+ .img-div img{
+  width:250px;
+}
+
  .text-div{
    text-align:left;
    width:45%;
