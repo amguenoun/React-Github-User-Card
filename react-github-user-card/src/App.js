@@ -51,6 +51,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>GitHub User Card</h1>
+        <p>Type in a username or click a follower.</p>
         <form onSubmit={this.handleUserSubmit}>
           <label htmlFor="username">Username: </label>
           <input name='username' type="text" placeholder='Github Username' value={this.state.input} onChange={this.handleUserChange} />
