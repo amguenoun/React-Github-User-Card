@@ -39,11 +39,7 @@ class App extends React.Component {
         <h1>GitHub User Card</h1>
         <UserCard user={this.state.user} key={this.state.user.id} />
         <h2>Followers: </h2>
-        {this.state.followers.map(follower =>
-          <div key={follower.id} onClick={() => this.handleUserChange(follower.login)}>
-            <FollowerCard username={follower.login} />
-          </div>
-        )}
+        {this.state.followers.map(follower => <FollowerCard key={follower.id} username={follower.login} />)}
       </div>
     );
   }
