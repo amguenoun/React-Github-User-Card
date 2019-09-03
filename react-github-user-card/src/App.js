@@ -36,6 +36,7 @@ class App extends React.Component {
   handleUserSubmit = (e) => {
     e.preventDefault();
     this.setState({ username: this.state.input }, this.runAxios);
+    this.setState({ input: '' });
   }
 
   handleUserChange = (e) => {
@@ -55,7 +56,7 @@ class App extends React.Component {
         <p>Type in a username or click a follower.</p>
         <form onSubmit={this.handleUserSubmit}>
           <label htmlFor="username">Username: </label>
-          <input name='username' type="text" placeholder='Github Username' value={this.state.input} onChange={this.handleUserChange} />
+          <input name='input' type="text" placeholder='Github Username' value={this.state.input} onChange={this.handleUserChange} />
           <button type='submit'>Submit</button>
         </form>
         <UserCard user={this.state.user} key={this.state.user.id} clickUserName={this.clickUserName} />
