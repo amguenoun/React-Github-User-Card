@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserCard = (props) => {
     return (
-        <div className="user-card">
+        <div className="user-card" onClick={() => props.clickUserName(props.user.login)}>
             <div className="img-div">
                 <img src={props.user.avatar_url} alt="user avatar" />
             </div>

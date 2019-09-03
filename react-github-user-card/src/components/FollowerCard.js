@@ -19,7 +19,7 @@ class FollowerCard extends React.Component {
 
     render() {
         return (
-            <UserCard user={this.state.follower} key={this.state.follower.id} />
+            <UserCard user={this.state.follower} key={this.state.follower.id} clickUserName={this.props.clickUserName} />
         )
     }
 }

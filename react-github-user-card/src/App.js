@@ -19,6 +19,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.runAxios();
+  }
+
+
+  runAxios = () => {
     axios.get(`https://api.github.com/users/${this.state.username}`)
       .then(res => this.setState({ user: res.data }))
       .catch(err => console.log('App: CMD: Axios: ', err))
@@ -28,34 +33,17 @@ class App extends React.Component {
       .catch(err => console.log('App: CDU: Axios: ', err))
   }
 
-
   handleUserSubmit = (e) => {
     e.preventDefault();
-    this.setState({ username: this.state.input }, () => {
-      axios.get(`https://api.github.com/users/${this.state.username}`)
-        .then(res => this.setState({ user: res.data }))
-        .catch(err => console.log('App: CMD: Axios: ', err))
-
-      axios.get(`https://api.github.com/users/${this.state.username}/followers`)
-        .then(res => this.setState({ followers: res.data }))
-        .catch(err => console.log('App: CDU: Axios: ', err))
-    });
+    this.setState({ username: this.state.input }, this.runAxios);
   }
-
-  // componentDidUpdate() {
-  //   if (this.state.username === this.state.input) {
-  //     axios.get(`https://api.github.com/users/${this.state.username}`)
-  //       .then(res => this.setState({ user: res.data }))
-  //       .catch(err => console.log('App: CMD: Axios: ', err))
-
-  //     axios.get(`https://api.github.com/users/${this.state.username}/followers`)
-  //       .then(res => this.setState({ followers: res.data }))
-  //       .catch(err => console.log('App: CDU: Axios: ', err))
-  //   }
-  // }
 
   handleUserChange = (e) => {
     this.setState({ input: e.target.value });
+  }
+
+  clickUserName = (name) => {
+    this.setState({ username: name }, this.runAxios);
   }
 
   render() {
@@ -68,9 +56,9 @@ class App extends React.Component {
           <input name='username' type="text" placeholder='Github Username' value={this.state.input} onChange={this.handleUserChange} />
           <button type='submit'>Submit</button>
         </form>
-        <UserCard user={this.state.user} key={this.state.user.id} />
+        <UserCard user={this.state.user} key={this.state.user.id} clickUserName={this.clickUserName} />
         <h2>Followers: </h2>
-        {this.state.followers.map(follower => <FollowerCard key={follower.id} username={follower.login} />)}
+        {this.state.followers.map(follower => <FollowerCard key={follower.id} username={follower.login} clickUserName={this.clickUserName} />)}
       </div>
     );
   }
