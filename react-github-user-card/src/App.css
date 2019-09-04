@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+ .user-card{
+   display:flex;
+   justify-content: space-between;
+   width:60%;
+   margin:2% auto;
+   cursor:pointer;
+   background:#cfd3ff;
+   padding:1% 0%;
+   border-radius:16px;
+   box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+ }
+
+ .img-div{
+   width:45%;
+   margin:0;
+ }
+
+ .img-div img{
+  width:250px;
+}
+
+ .text-div{
+   text-align:left;
+   width:45%;
+   margin:0;
+ }
